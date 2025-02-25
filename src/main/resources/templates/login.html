@@ -9,11 +9,11 @@
 		body {
 		    background-color: #f8f9fa;
 		    font-family: 'Arial', sans-serif;
-		    height: 100vh; /* Yüksekliği tam ekran yap */
-		    display: flex; /* Flexbox kullan */
-		    justify-content: center; /* Yatayda ortala */
-		    align-items: center; /* Dikeyde ortala */
-		    margin: 0; /* Varsayılan margin'i sıfırla */
+		    height: 100vh; 
+		    display: flex; 
+		    justify-content: center; 
+		    align-items: center;
+		    margin: 0; 
 		}
 
 		.login-container {
@@ -57,20 +57,20 @@
 
 		
 		.login-footer-text a {
-		    color: black;           /* Normal durumda siyah renk */
-		    text-decoration: none;  /* Alt çizgi kaldır */
-		    font-weight: bold;      /* Metin kalın (bold) */
+		    color: black;           
+		    text-decoration: none;  
+		    font-weight: bold;      
 		}
 
 		.login-footer-text a:hover {
-		    color: #28a745;         /* Hover durumunda yeşil renk */
-		    text-decoration: underline; /* Alt çizgi ekle */
+		    color: #28a745;         
+		    text-decoration: underline; 
 		}
 
 
 
 
-        /* Floating label styles */
+        
         .form-floating {
             position: relative;
             margin-bottom: 15px;
@@ -99,24 +99,25 @@
             top: -16px;
             left: 15px;
             font-size: 12px;
-            color: #007bff; /* Highlight color */
+            color: #007bff; 
         }
 
         .form-floating input:focus {
-            border-color: #007bff; /* Highlight border */
+            border-color: #007bff;
         }
 
-        /* Focused label color change */
+       
         .form-floating input:focus ~ label {
-            color: #0056b3; /* Color change on focus */
+            color: #0056b3; 
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>Giriş Yap</h2>
+        <h2>Login</h2>
         <form action="/login" method="post">
-            <!-- Hata mesajı -->
+           
+			
             <div th:if="${param.error}">
                 <p class="error-message">Geçersiz kullanıcı adı veya şifre</p>
             </div>
@@ -131,18 +132,18 @@
                 <label for="password">Password</label>
             </div>
 
-            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </form>
 
-        <!-- Footer -->
+        
         <div class="login-footer">
-			<p class="login-footer-text">Henüz bir hesabınız yok mu? <a href="/register">Kayıt Ol</a></p>
+			<p class="login-footer-text">Don't have an account yet? <a href="/register">Sign Up</a></p>
 
         </div>
     </div>
 
     <script>
-        // Etiketin görünürlüğünü değiştiren fonksiyon
+        
         function toggleLabelVisibility(inputElement) {
             const label = inputElement.nextElementSibling;
             if (inputElement.value) {
@@ -151,6 +152,9 @@
                 label.style.display = 'block';
             }
         }
+		
+		
+		
     </script>
 </body>
 </html>

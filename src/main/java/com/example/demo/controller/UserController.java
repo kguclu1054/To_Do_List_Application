@@ -29,27 +29,27 @@ public class UserController {
 
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    // Register işlemi
+    
     @GetMapping("/register")
     public String showRegisterForm() {
-        return "register";  // register.html sayfasını göster
+        return "register"; 
     }
 
     @PostMapping("/register")
     public String registerUser(@RequestParam String username, 
                                @RequestParam String password, 
                                @RequestParam String confirmPassword, 
-                               @RequestParam String email,  // Burada email'i alıyoruz
+                               @RequestParam String email, 
                                Model model) {
         if (!password.equals(confirmPassword)) {
             model.addAttribute("error", "Şifreler eşleşmiyor.");
-            return "register";  // Hata mesajıyla birlikte register sayfasına geri dön
+            return "register";  
         }
 
         User user = new User();
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
-        user.setEmail(email);  // E-posta değerini kaydediyoruz
+        user.setEmail(email);  
 
         userRepository.save(user);
         
@@ -58,37 +58,28 @@ public class UserController {
 
 
 
-    // Login işlemi
+    
     @GetMapping("/login")
     public String showLoginForm() {
-        return "login";  // login.html sayfasını göster
+        return "login";  
     }
 
     @PostMapping("/login")
     public String loginUser(@RequestParam String username, @RequestParam String password, Model model) {
         User user = userRepository.findByUsername(username)
-                .orElse(null);  // Kullanıcı bulunamazsa null döner
+                .orElse(null);  
 
         if (user != null) {
-            // Şifreyi kontrol et
+            
             if (passwordEncoder.matches(password, user.getPassword())) {
-                return "redirect:/index";  // Giriş başarılıysa index sayfasına yönlendir
+            	
+                return "redirect:/todo";  
             } else {
-                return "redirect:/login?error=true";  // Şifre hatalıysa hata URL'sine yönlendir
+                return "redirect:/login?error=true";  
             }
         } else {
-            return "redirect:/login?error=true";  // Kullanıcı bulunamadıysa hata URL'sine yönlendir
+            return "redirect:/login?error=true";  
         }
-    }
-
-
-
-
-
-    // Ana sayfa (login başarılıysa)
-    @GetMapping("/index")
-    public String homePage() {
-        return "index";  // Ana sayfa (home.html)
     }
 }
 

@@ -15,20 +15,20 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
+            .csrf().disable()  
             .authorizeRequests()
-                .requestMatchers("/login", "/register").permitAll()  // login ve register'a herkes erişebilir
-                .anyRequest().authenticated()  // Diğer tüm isteklere yetki gereklidir
+                .requestMatchers("/login", "/register").permitAll()  
+                .anyRequest().authenticated()  
             .and()
             .formLogin()
-                .loginPage("/login")  // Özel giriş sayfası
-                .defaultSuccessUrl("/index", true)  // Giriş başarılı olursa index sayfasına yönlendir
-                .failureUrl("/login?error=true")  // Hata durumunda login sayfasına yönlendir
+                .loginPage("/login")  
+                .defaultSuccessUrl("/todo", true) 
+                .failureUrl("/login?error=true")  
                 .permitAll()
             .and()
             .logout()
-                .logoutUrl("/logout")  // Logout URL'si
-                .logoutSuccessUrl("/login?logout=true")  // Çıkış sonrası login sayfasına yönlendir
+                .logoutUrl("/logout")  
+                .logoutSuccessUrl("/login?logout=true")  
                 .permitAll();
 
         return http.build();
@@ -36,9 +36,10 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();  // Şifrelerin güvenli bir şekilde saklanabilmesi için BCrypt kullanılıyor
+        return new BCryptPasswordEncoder();  
     }
 }
+
 
 
 
