@@ -5,11 +5,16 @@ Features
 User Login: Users can log in after registering. Error messages are displayed on the login page for incorrect credentials.
 User Registration: New users can register by providing a username, email, and password with confirmation.
 To-Do List: Once logged in, users can view their personal To-Do List, add new tasks, edit existing tasks, and delete tasks.
+
 Logout: Users can log out by clicking the logout button in the top right corner.
+
 Technologies
 Backend: Java Spring Boot
+
 Frontend: HTML, CSS, JavaScript, Bootstrap
+
 Database: MySQL
+
 Authentication: Spring Security (for user login and security)
 
 Screen Recording
